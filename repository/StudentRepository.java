@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-package feedbackManagementSystem.repository;
-
-import feedbackManagementSystem.entity.Student;
-=======
 package CollaboratedFeedbackManagementSystem.repository;
 
 
 
 import CollaboratedFeedbackManagementSystem.model.Student;
->>>>>>> main
 
 import java.util.ArrayList;
 
