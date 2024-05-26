@@ -1,4 +1,4 @@
-package Model;
+package CollaboratedFeedbackManagementSystem.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.List;
 public class Feedback {
     private String feedbackId;
     private  String studentPhoneNo;
-    private List<Question> questionList = new ArrayList<>();
-    public Feedback (String feedbackId, List<Question>questionList){
+    private ArrayList<Question> questionList = new ArrayList<>();
+    public Feedback (String feedbackId, ArrayList<Question>questionList){
         this.feedbackId=feedbackId;
-        this.questionList=questionList;
+        this.questionList.addAll(questionList);
     }
 
     public String getFeedbackId() {
@@ -28,15 +28,15 @@ public class Feedback {
         this.studentPhoneNo = studentPhoneNo;
     }
 
-    public List<Question> getQuestionList() {
+    public ArrayList<Question> getQuestionList() {
         return questionList;
     }
 
-    public void setQuestionList(List<Question> questionList) {
-        this.questionList = questionList;
+    public void setQuestionList(ArrayList<Question> questionList) {
+        this.questionList.addAll(questionList);
     }
     public Feedback(Feedback obj){
         this.feedbackId= obj.feedbackId;
-        this.questionList.addAll(questionList);
+        this.questionList.addAll(obj.questionList);
     }
 }

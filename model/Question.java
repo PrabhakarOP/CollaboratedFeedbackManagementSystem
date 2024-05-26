@@ -1,4 +1,4 @@
-package Model;
+package CollaboratedFeedbackManagementSystem.model;
 
 public class Question {
     private String question;

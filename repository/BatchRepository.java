@@ -1,7 +1,9 @@
-package feedbackManagementSystem.repository;
+package CollaboratedFeedbackManagementSystem.repository;
 
-import feedbackManagementSystem.entity.Batch;
-import feedbackManagementSystem.entity.Student;
+
+
+import CollaboratedFeedbackManagementSystem.model.Batch;
+import CollaboratedFeedbackManagementSystem.model.Student;
 
 import java.util.ArrayList;
 
@@ -10,5 +12,5 @@ public interface BatchRepository {
 
     void save(Batch batch);
     Batch fetchBatch(String bId);
-    void addStudentToBatch(Student student,String bId);
+    void addStudentToBatch(Student student, String bId);
 }

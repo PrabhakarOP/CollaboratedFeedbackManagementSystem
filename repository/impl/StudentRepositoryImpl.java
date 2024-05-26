@@ -1,8 +1,8 @@
-package feedbackManagementSystem.repository.impl;
+package CollaboratedFeedbackManagementSystem.repository.impl;
 
-import feedbackManagementSystem.entity.Student;
-import feedbackManagementSystem.repository.StudentRepository;
 
+import CollaboratedFeedbackManagementSystem.model.Student;
+import CollaboratedFeedbackManagementSystem.repository.StudentRepository;
 
 public class StudentRepositoryImpl implements StudentRepository {
 
@@ -14,7 +14,7 @@ public class StudentRepositoryImpl implements StudentRepository {
     @Override
     public Student fetchStudent(String studentPhoneNumber) {
         for(Student x: studentList){
-            if(x.getPhoneNumber().equals(studentPhoneNumber))
+            if(x.getStudentPhoneNumber().equals(studentPhoneNumber))
                 return x;
         }
         return null;

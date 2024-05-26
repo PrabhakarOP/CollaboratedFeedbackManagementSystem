@@ -1,4 +1,4 @@
-package Model;
+package CollaboratedFeedbackManagementSystem.model;
 
 public class Admin {
     private String  adminName;
@@ -37,7 +37,7 @@ public class Admin {
     public void setAdminPhotoUrl(String adminPhotoUrl) {
         this.adminPhotoUrl = adminPhotoUrl;
     }
-    public Admin(String adminName, String adminadminPhoneNumber, String adminPassword){
+    public Admin(String adminName, String adminPhoneNumber, String adminPassword){
         this.adminName=adminName;
         this.adminPhoneNumber=adminPhoneNumber;
         this.adminPassword=adminPassword;

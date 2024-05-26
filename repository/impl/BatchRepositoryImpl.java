@@ -1,8 +1,9 @@
-package feedbackManagementSystem.repository.impl;
+package CollaboratedFeedbackManagementSystem.repository.impl;
 
-import feedbackManagementSystem.entity.Batch;
-import feedbackManagementSystem.entity.Student;
-import feedbackManagementSystem.repository.BatchRepository;
+
+import CollaboratedFeedbackManagementSystem.model.Batch;
+import CollaboratedFeedbackManagementSystem.model.Student;
+import CollaboratedFeedbackManagementSystem.repository.BatchRepository;
 
 public class BatchRepositoryImpl implements BatchRepository {
     @Override
@@ -12,7 +13,7 @@ public class BatchRepositoryImpl implements BatchRepository {
 
     public Batch fetchBatch(String bId){
         for(Batch x: batchList){
-            if(x.getbId().equals(bId))
+            if(x.getBatchId().equals(bId))
                 return x;
         }
             return null;
@@ -21,7 +22,7 @@ public class BatchRepositoryImpl implements BatchRepository {
     @Override
     public void addStudentToBatch(Student student, String bId) {
         for(Batch x: batchList){
-            if(x.getbId().equals(bId))
+            if(x.getBatchId().equals(bId))
                 x.addStudent(student);
         }
     }

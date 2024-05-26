@@ -1,4 +1,4 @@
-package Model;
+package CollaboratedFeedbackManagementSystem.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,31 +6,31 @@ import java.util.List;
 public class Batch {
     private String batchName;
     private String batchId;
-    private Feedback obj;
-    private List<Student> studentList = new ArrayList<>();
-    private List<Feedback> feedbackList = new ArrayList<>();
+    private Feedback feedbackTemplate;
+    private ArrayList<Student> studentList = new ArrayList<>();
+    private ArrayList<Feedback> feedbackList = new ArrayList<>();
 
-    public Feedback getObj() {
-        return obj;
+    public Feedback getFeedbackTemplate() {
+        return feedbackTemplate;
     }
 
-    public void setObj(Feedback obj) {
-        this.obj = obj;
+    public void setFeedbackTemplate(Feedback feedbackTemplate) {
+        this.feedbackTemplate = feedbackTemplate;
     }
 
-    public List<Feedback> getFeedbackList() {
+    public ArrayList<Feedback> getFeedbackList() {
         return feedbackList;
     }
 
-    public void setFeedbackList(List<Feedback> feedbackList) {
+    public void setFeedbackList(ArrayList<Feedback> feedbackList) {
         this.feedbackList = feedbackList;
     }
 
-    public List<Student> getStudentList() {
+    public ArrayList<Student> getStudentList() {
         return studentList;
     }
 
-    public void setStudentList(List<Student> studentList) {
+    public void setStudentList(ArrayList<Student> studentList) {
         this.studentList = studentList;
     }
 

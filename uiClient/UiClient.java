@@ -1,6 +1,6 @@
-package feedbackManagementSystem.UiClient;
-import feedbackManagementSystem.controller.Controller;
-import feedbackManagementSystem.entity.Question;
+package CollaboratedFeedbackManagementSystem.uiClient;
+import CollaboratedFeedbackManagementSystem.controller.Controller;
+import CollaboratedFeedbackManagementSystem.model.Question;
 
 import java.util.ArrayList;
 
@@ -17,9 +17,9 @@ public class UiClient {
 
         controller.signin("7348891347","1234","admin");
 
-        controller.creatBatch("7348891347","Cage-1","c1");
-        controller.creatBatch("7348891347","Cage-2","c2");
-        controller.creatBatch("7348891347","Cage-3","c3");
+        controller.createBatch("7348891347","Cage-1","c1");
+        controller.createBatch("7348891347","Cage-2","c2");
+        controller.createBatch("7348891347","Cage-3","c3");
 
         controller.assignBatch("7348891347","9798825716","c1");
         controller.assignBatch("7348891347","7050577303","c1");
@@ -44,7 +44,7 @@ public class UiClient {
         controller.createFeedback("c2f1","c2",questionList);
         controller.createFeedback("c3f1","c3",questionList);
 
-        controller.editQuestion("c1",3,"Should this class be repeated?");
+        controller.editFeedbackQuestion("c1",3,"Should this class be repeated?");
         controller.deleteQuestion("c2",1);
 
         controller.showMyBatchFeedbacks("9798825716");

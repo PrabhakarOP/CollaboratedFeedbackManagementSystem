@@ -1,7 +1,8 @@
-package feedbackManagementSystem.repository.impl;
+package CollaboratedFeedbackManagementSystem.repository.impl;
 
-import feedbackManagementSystem.entity.Admin;
-import feedbackManagementSystem.repository.AdminRepository;
+
+import CollaboratedFeedbackManagementSystem.model.Admin;
+import CollaboratedFeedbackManagementSystem.repository.AdminRepository;
 
 public class AdminRepositoryImpl implements AdminRepository {
 
@@ -14,7 +15,8 @@ public class AdminRepositoryImpl implements AdminRepository {
     @Override
     public Admin fetchAdmin(String phoneNumber) {
         for(Admin x: adminList){
-            if(x.getPhoneNumber().equals(phoneNumber))
+//            System.out.println(x.getAdminadminPhoneNumber()+"  "+phoneNumber+"/n");
+            if(x.getAdminadminPhoneNumber().equals(phoneNumber))
                 return x;
         }
         return null;
@@ -23,7 +25,7 @@ public class AdminRepositoryImpl implements AdminRepository {
     @Override
     public boolean isAdmin(String phoneNumber) {
         for(Admin x: adminList){
-            if(x.getPhoneNumber().equals(phoneNumber))
+            if(x.getAdminadminPhoneNumber().equals(phoneNumber))
                 return true;
         }
         return false;

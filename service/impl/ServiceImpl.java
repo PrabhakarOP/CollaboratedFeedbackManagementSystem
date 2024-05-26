@@ -1,7 +1,14 @@
-package feedbackManagementSystem.service.impl;
+package CollaboratedFeedbackManagementSystem.service.impl;
 
-import feedbackManagementSystem.entity.*;
-import feedbackManagementSystem.service.Service;
+import CollaboratedFeedbackManagementSystem.model.Admin;
+import CollaboratedFeedbackManagementSystem.model.Question;
+import CollaboratedFeedbackManagementSystem.model.Feedback;
+import CollaboratedFeedbackManagementSystem.model.Student;
+import CollaboratedFeedbackManagementSystem.model.Batch;
+
+import CollaboratedFeedbackManagementSystem.service.Service;
+
+
 
 import java.util.ArrayList;
 
@@ -24,7 +31,7 @@ public class ServiceImpl implements Service {
         if (role.equalsIgnoreCase("admin")) {
             Admin admin = adminRepo.fetchAdmin(phoneNumber);
             if (admin != null) {
-                if (password.equals(admin.getPassword()))
+                if (password.equals(admin.getAdminPassword()))
                     return true;
                 else
                     return false;
@@ -33,7 +40,7 @@ public class ServiceImpl implements Service {
         } else {
             Student student = studentRepo.fetchStudent(phoneNumber);
             if (student != null) {
-                if (password.equals(student.getPassword()))
+                if (password.equals(student.getStudentPassword()))
                     return true;
                 else
                     return false;
@@ -57,7 +64,7 @@ public class ServiceImpl implements Service {
         if (adminRepo.isAdmin(adminPhoneNumber)) {
             Student student = studentRepo.fetchStudent(studentPhoneNumber);
             student.setBatchId(bId);
-            student.setBatchName(batchRepo.fetchBatch(bId).getName());
+            student.setBatchName(batchRepo.fetchBatch(bId).getBatchName());
             batchRepo.addStudentToBatch(student, bId);
         } else
             System.out.println("cannot assign");
@@ -76,7 +83,7 @@ public class ServiceImpl implements Service {
         Feedback feedbackTemplate = batch.getFeedbackTemplate();
         ArrayList<Question> questionList = feedbackTemplate.getQuestionList();
         Question editedQuestionObj = new Question(editedQuestion);
-        questionList.set(questionNumber - 1, editedQuestionObj);
+        questionList.set(questionNumber  -1, editedQuestionObj);
     }
 
 
@@ -96,13 +103,15 @@ public class ServiceImpl implements Service {
     public void submitFeedback(String studentPhoneNumber, String bId, String[] answerList) {
         Batch batch=batchRepo.fetchBatch(bId);
         Feedback feedback=new Feedback(batch.getFeedbackTemplate());
-        feedback.setStudentPhoneNumber(studentPhoneNumber);
+        feedback.setStudentPhoneNo(studentPhoneNumber);
 
         ArrayList<Question> questionList=feedback.getQuestionList();
-        for(int i=answerList.length-1;i>0;i--){
+        for(int i=answerList.length-1;i>=0;i--){
+
             Question question=questionList.get(i);
             question.setAnswer(answerList[i]);
         }
+
 
         batch.addFeedback(feedback);
     }
@@ -112,14 +121,14 @@ public class ServiceImpl implements Service {
         Batch batch=batchRepo.fetchBatch(studentRepo.fetchStudent(studentPhoneNumber).getBatchId());
         ArrayList<Feedback> studentFeedbackList=new ArrayList<>();
         for(Feedback x: batch.getFeedbackList()){
-            if(x.getStudentPhoneNumber().equals(studentPhoneNumber)){
+            if(x.getStudentPhoneNo().equals(studentPhoneNumber)){
                 studentFeedbackList.add(x);
             }
         }
         return studentFeedbackList;
     }
 
-    @Override
+
     public ArrayList<Feedback> showBatchFeedback(String bId) {
         Batch batch=batchRepo.fetchBatch(bId);
         return batch.getFeedbackList();

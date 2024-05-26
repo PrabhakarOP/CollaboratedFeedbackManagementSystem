@@ -1,7 +1,8 @@
-package feedbackManagementSystem.repository;
+package CollaboratedFeedbackManagementSystem.repository;
 
-import feedbackManagementSystem.entity.Admin;
-import feedbackManagementSystem.entity.Student;
+
+
+import CollaboratedFeedbackManagementSystem.model.Admin;
 
 import java.util.ArrayList;
 

@@ -1,11 +1,13 @@
-package feedbackManagementSystem.service;
+package CollaboratedFeedbackManagementSystem.service;
 
 
-import feedbackManagementSystem.entity.Feedback;
-import feedbackManagementSystem.entity.Question;
-import feedbackManagementSystem.repository.impl.AdminRepositoryImpl;
-import feedbackManagementSystem.repository.impl.BatchRepositoryImpl;
-import feedbackManagementSystem.repository.impl.StudentRepositoryImpl;
+
+import CollaboratedFeedbackManagementSystem.model.Feedback;
+import CollaboratedFeedbackManagementSystem.model.Question;
+import CollaboratedFeedbackManagementSystem.repository.impl.AdminRepositoryImpl;
+import CollaboratedFeedbackManagementSystem.repository.impl.BatchRepositoryImpl;
+import CollaboratedFeedbackManagementSystem.repository.impl.StudentRepositoryImpl;
+
 
 import java.util.ArrayList;
 
