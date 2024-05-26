@@ -12,6 +12,10 @@ Feedback Management System:
 
 currentlyWorkingIn: serviceImpl.createFeedback(String fId) ;
 
+To fix:
+1. check existing batch while creating a new batch.
+2. do not print message in server ref(serviceImpl.createBatch).
+
 Implimentation:
 
 1.Entity
