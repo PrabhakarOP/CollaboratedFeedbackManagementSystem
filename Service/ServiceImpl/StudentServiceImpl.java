@@ -10,8 +10,21 @@ import Service.StudentService;
 import java.util.ArrayList;
 
 public class StudentServiceImpl implements StudentService {
-   private StudentRepositoryImpl studentRepoimpl = new StudentRepositoryImpl();
-    public boolean signUp(String name , String phoneNumber , String password , AdminServiceImpl adminService,Message msg){
+   private StudentRepositoryImpl studentRepoimpl = StudentRepositoryImpl.getInstance();
+
+   // singelton design pattern - most frequent asked interview questions
+
+    private static StudentServiceImpl instance;
+
+    public static synchronized StudentServiceImpl getInstance() {
+        if(instance == null) {
+            instance = new StudentServiceImpl();
+        }
+         return instance;
+    }
+
+    // bad design
+    public boolean signUp(String name , String phoneNumber , String password , AdminServiceImpl adminService, Message msg){
       Student student= studentRepoimpl.fetchStudent(phoneNumber);
       boolean isAdmin=adminService.isAdmin(phoneNumber);
        if(student!=null||isAdmin){

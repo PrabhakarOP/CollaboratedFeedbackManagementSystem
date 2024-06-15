@@ -10,11 +10,11 @@ public class AdminRepositoryImpl implements AdminRepository {
     }
 
     public boolean isAdmin(String phoneNumber) {
-        Admin admin=fetchAdmin(phoneNumber);
+        Admin admin= findAdminByPhoneNumber(phoneNumber);
         return admin!=null;
     }
 
-    public Admin fetchAdmin(String phoneNumber) {
+    public Admin findAdminByPhoneNumber(String phoneNumber) {
 
         for(Admin admin: adminList){
             if(admin.getPhoneNumber().equals(phoneNumber))

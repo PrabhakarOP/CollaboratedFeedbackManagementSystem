@@ -1,5 +1,6 @@
 package repository.impl;
 
+import Service.ServiceImpl.StudentServiceImpl;
 import model.Feedback;
 import model.Student;
 import repository.StudentRepository;
@@ -7,6 +8,15 @@ import repository.StudentRepository;
 import java.util.ArrayList;
 
 public class StudentRepositoryImpl implements StudentRepository {
+
+    private static StudentRepositoryImpl instance;
+
+    public static synchronized StudentRepositoryImpl getInstance() {
+        if(instance == null) {
+            instance = new StudentRepositoryImpl();
+        }
+        return instance;
+    }
 
     public boolean save(Student student) {
         studentList.add(student);

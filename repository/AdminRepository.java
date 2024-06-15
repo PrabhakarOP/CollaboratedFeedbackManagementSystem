@@ -11,5 +11,5 @@ public interface AdminRepository {
 
     boolean isAdmin(String phoneNumber);
 
-    Admin fetchAdmin(String phoneNumber);
+    Admin findAdminByPhoneNumber(String phoneNumber);
 }

@@ -22,7 +22,7 @@ public class Controller {
 
     public boolean signUp(String name, String phoneNumber, String password, String role, Message msg){
         if(role.equalsIgnoreCase("admin"))
-            return adminService.signUp(name,phoneNumber,password,studentService,msg);
+            return adminService.signUp(name,phoneNumber,password,msg);
         else
             return studentService.signUp(name,phoneNumber,password,adminService,msg);
     }
