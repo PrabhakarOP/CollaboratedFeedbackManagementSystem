@@ -1,9 +1,12 @@
 # How To Use Section
 
  1.  In any point of the program enter 'q' to abort the current process and return to previous menu.
-        except:   1. During entering question number.
-                  2. when a message like "press enter to continue" shows.
-                  3. when entering your options.
+
+        Except:
+
+           1. During entering question number.
+           2. when a message like "press enter to continue" shows.
+           3. when entering your options.
 
 
 
@@ -57,10 +60,57 @@
         d. feedback
 
             //attributes
+                String date
+                studentPhoneNumber
+                studentName
+                questionList
+
+            //constructor
+                Feedback()     
+
+            //copy constructor
+                Feedback(Feedback feedbackTemplate,studentPhoneNumber,studentName)
+
+        //getter setter
                 
         e. question
 
+            //attributes
+                String question
+                String answer
+
+            //constructor
+                Question(question)
+        
+            //getter setter
+
     2. Controller
+
+        StudentServiceImpl obj
+        AdminServiceImpl obj
+        BatchServiceImpl obj
+        signUp(name,phoneNumber,passWord,role,msg)
+        adminSignIn(phoneNumber,password,msg)
+        studentSignIn(phoneNumber,password,msg)
+        signIn(phoneNumber,password,msg)
+        fetchStudent(studentPhoneNumber)       
+        createBatch(batchName,msg)
+        fetchBatch(batchName)
+        isStudent(phoneNumber)
+        isBatch(batchName)
+        deleteBatch(batchName,msg)
+        assignBatch(poneNumber,batchName,msg
+        addQuestion(batchName,newQuestion,msg)
+        editQuestion(batchName,questionNumber,editedQuestion,msg)
+        deleteQuestion(batchName,questionNumber,msg)
+        List getStudentFeedback(studentPhoneNumber)
+        List getBatchFeedbackList(batchName)
+        getBatchFeedbackTemplate(batchName)
+        submitFeedback(studentFeedback,batchName)    
+        List getStudentByBatchName(batchName,msg)
+        List getStudentList
+        List getbatchList
+
     3. Service
     4. Repository
     5. Uiclient
