@@ -1,15 +1,24 @@
 package uiclient;
 
+import java.util.Objects;
+
 public class Helper {
 
  // ***********************Validation Functions**********************************
 
     boolean isPhoneNumberValid(String phoneNumber, Message msg){
+        //to check null input
+        if(phoneNumber==null || phoneNumber.isEmpty()){
+            msg.message="NO input detected!!";
+            return false;
+        }
+        //check length
         if(phoneNumber.length()!=10){       //to check if 10 characters are available
-            msg.message="10 digits required";
+            msg.message="Enter a valid 10 digits phone number";
             return false;
         }
 
+        //check valid characters
         String validDigits="0123456789";
 
         for(int i=0;i<10;i++){               //to check if all the characters are digit
@@ -31,7 +40,7 @@ public class Helper {
 
     boolean isNameValid(String name,Message msg){
         //to check null input
-        if(name==""){
+        if(name==null || name.isEmpty()){
             msg.message="NO input detected";
             return false;
         }
@@ -48,17 +57,7 @@ public class Helper {
                 }
             }
             if(f==0){
-                msg.message="Only alphabets and a space is allowed!";
-                return false;
-            }
-        }
-        //loop to check if there is more than one space.
-        int c=0;
-        for(int i=0;i<name.length();i++){
-            if(name.charAt(i)==' ')
-                c++;
-            if(c>1){
-                msg.message="More than one space not allowed!";
+                msg.message="Only alphabets are allowed!";
                 return false;
             }
         }
@@ -69,11 +68,11 @@ public class Helper {
     boolean isBatchNameValid(String batchName,Message msg){
         //Format batch-1
         //for null input check
-        if(batchName==""){
+        if(batchName==null || batchName.isEmpty()){
             msg.message="NO input detected";
             return false;
         }
-
+        //check for valid characters
         String validCharacters="0123456789abcdefghijklmnopqrstuvwxyz";
 
         for(int i=0;i<batchName.length();i++){
@@ -86,7 +85,7 @@ public class Helper {
                 }
             }
             if(f==0){
-                msg.message="No space , special characters or uppercase letter allowed";
+                msg.message="special characters not allowed in batch name";
                 return false;
             }
         }

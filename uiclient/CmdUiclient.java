@@ -109,26 +109,26 @@ public class CmdUiclient {
         }
 
         System.out.print("Enter Name: ");
-        String name=sc.nextLine();
+        String name= helper.formatName(sc.nextLine());
         if(name.equalsIgnoreCase("q"))                  //Aborts the current process and back to previous menu.
             return;
 
 
         while(!helper.isNameValid(name,msg)){
             System.out.print(msg.message+"\nPlease Enter a valid name: ");
-            name=sc.nextLine();
+            name= helper.formatName(sc.nextLine());
             if(name.equalsIgnoreCase("q"))              //Aborts the current process and back to previous menu.
                 return;
         }
 
         System.out.print("Enter Phone Number: ");
-        String phoneNumber=sc.nextLine();
+        String phoneNumber= helper.formatPhoneNumber(sc.nextLine());
         if(phoneNumber.equalsIgnoreCase("q"))           //Aborts the current process and back to previous menu.
             return;
 
         while(!helper.isPhoneNumberValid(phoneNumber,msg)){
             System.out.print(msg.message+"\nPlease enter valid phone number: ");
-            phoneNumber=sc.nextLine();
+            phoneNumber= helper.formatPhoneNumber(sc.nextLine());
             if(phoneNumber.equalsIgnoreCase("q"))         //Aborts the current process and back to previous menu.
                 return;
         }
@@ -179,13 +179,13 @@ public class CmdUiclient {
 
             //phone number
             System.out.print("Enter Phone Number: ");
-            String phoneNumber=sc.nextLine();
+            String phoneNumber= helper.formatPhoneNumber(sc.nextLine());
             if(phoneNumber.equalsIgnoreCase("q")) //Aborts the current process and back to previous menu.
                 return;
 
             while(!helper.isPhoneNumberValid(phoneNumber,msg)){
                 System.out.print(msg.message + "\nPlease Enter valid Phone number: ");
-                phoneNumber=sc.nextLine();
+                phoneNumber= helper.formatPhoneNumber(sc.nextLine());
                 if(phoneNumber.equalsIgnoreCase("q")) //Aborts the current process and back to previous menu.
                     return;
             }
@@ -251,7 +251,7 @@ public class CmdUiclient {
             System.out.println("11.Show feedbacks of a student");
             System.out.println("12.show feedbacks of a batch");
             System.out.println("13.sign out");
-            System.out.println("\nEnter you option: ");
+            System.out.print("\nEnter you option: ");
 
             int opt = 0;
 
@@ -353,14 +353,14 @@ public class CmdUiclient {
         Scanner sc=new Scanner(System.in);
 
         System.out.print("Enter Batch Name: ");
-        String batchName=sc.nextLine();
+        String batchName= helper.formatBatchName(sc.nextLine());
 
         if(batchName.equalsIgnoreCase("q"))                  //Aborts the current process and back to previous menu.
             return;
 
         while(!helper.isBatchNameValid(batchName,msg)){
             System.out.print(msg.message+"\nPlease Enter a valid name: ");
-            batchName=sc.nextLine();
+            batchName= helper.formatBatchName(sc.nextLine());
             if(batchName.equalsIgnoreCase("q"))              //Aborts the current process and back to previous menu.
                 return;
         }
@@ -381,13 +381,13 @@ public class CmdUiclient {
         do {
 
             System.out.print("Enter Student phone Number: ");
-            studentPhoneNumber = sc.nextLine();
+            studentPhoneNumber = helper.formatPhoneNumber(sc.nextLine());
             if (studentPhoneNumber.equalsIgnoreCase("q"))           //Aborts the current process and back to previous menu.
                 return;
 
             while (!helper.isPhoneNumberValid(studentPhoneNumber, msg)) {
                 System.out.print(msg.message + "\nPlease enter valid phone number: ");
-                studentPhoneNumber = sc.nextLine();
+                studentPhoneNumber = helper.formatPhoneNumber(sc.nextLine());
                 if (studentPhoneNumber.equalsIgnoreCase("q"))         //Aborts the current process and back to previous menu.
                     return;
             }
@@ -410,13 +410,13 @@ public class CmdUiclient {
         showBatchList();
         do {
             System.out.print("Enter Batch name to be assigned: ");
-            batchName = sc.nextLine();
+            batchName = helper.formatBatchName(sc.nextLine());
             if (batchName.equalsIgnoreCase("q"))
                 return;
 
             while (!helper.isBatchNameValid(batchName, msg)) {
                 System.out.print(msg.message + "\nPlease Enter a valid batchName: ");
-                batchName = sc.nextLine();
+                batchName = helper.formatBatchName(sc.nextLine());
                 if (batchName.equalsIgnoreCase("q"))
                     return;
             }
@@ -450,13 +450,13 @@ public class CmdUiclient {
         String batchName;
         do {
             System.out.print("Enter Batch name to be deleted: ");
-            batchName = sc.nextLine();
+            batchName = helper.formatBatchName(sc.nextLine());
             if (batchName.equalsIgnoreCase("q"))
                 return;
 
             while (!helper.isBatchNameValid(batchName, msg)) {
                 System.out.print(msg.message + "\nPlease Enter a valid batchName: ");
-                batchName = sc.nextLine();
+                batchName = helper.formatBatchName(sc.nextLine());
                 if (batchName.equalsIgnoreCase("q"))
                     return;
             }
@@ -477,9 +477,9 @@ public class CmdUiclient {
             System.out.println("batch deleted");
         else
             System.out.println(msg.message+"  failed to delete");
-
-
-    }  //Incomplete
+        System.out.println("press enter to continue: ");
+        sc.nextLine();
+    }  //completed
     static void getStudentByBatchName() {
         Scanner sc = new Scanner(System.in);
         //select a batch
@@ -488,13 +488,13 @@ public class CmdUiclient {
         showBatchList();
         do {
             System.out.print("Enter Batch name : ");
-            batchName = sc.nextLine();
+            batchName = helper.formatBatchName(sc.nextLine());
             if (batchName.equalsIgnoreCase("q"))
                 return;
 
             while (!helper.isBatchNameValid(batchName, msg)) {
                 System.out.print(msg.message + "\nPlease Enter a valid batchName: ");
-                batchName = sc.nextLine();
+                batchName = helper.formatBatchName(sc.nextLine());
                 if (batchName.equalsIgnoreCase("q"))
                     return;
             }
@@ -509,7 +509,9 @@ public class CmdUiclient {
                     return;
             }
         } while (!controller.isBatch(batchName));
+
         ArrayList<Student> studentList = controller.getStudentByBatchName(batchName, msg);
+
         if (studentList.isEmpty()) {
             System.out.println("!!!This batch has no students yet!!!");
             System.out.print("press enter to go back : ");
@@ -530,7 +532,7 @@ public class CmdUiclient {
         System.out.println("*** Total students : "+i);
         System.out.println("press enter to continue :");
         sc.nextLine();
-    }
+    }  //to check how student list is showing on cmd
     static void addQuestion(){
         Scanner sc=new Scanner(System.in);
         String batchName;
@@ -539,13 +541,13 @@ public class CmdUiclient {
 
         do {
             System.out.print("Enter Batch name: ");
-            batchName = sc.nextLine();
+            batchName = helper.formatBatchName(sc.nextLine());
             if (batchName.equalsIgnoreCase("q"))
                 return;
 
             while (!helper.isBatchNameValid(batchName, msg)) {
                 System.out.print(msg.message + "\nPlease Enter a valid batchName: ");
-                batchName = sc.nextLine();
+                batchName = helper.formatBatchName(sc.nextLine());
                 if (batchName.equalsIgnoreCase("q"))
                     return;
             }
@@ -577,7 +579,7 @@ public class CmdUiclient {
                 System.out.println(msg.message + " !!!! failed to add question !!!!");
         }while(ch=='y' || ch=='Y');
 
-    } //completed
+    } //completed  //format question should be created
     static void editQuestion(){
         //select batch
         Scanner sc=new Scanner(System.in);
@@ -586,13 +588,13 @@ public class CmdUiclient {
         showBatchList();
         do {
             System.out.print("Enter Batch name : ");
-            batchName = sc.nextLine();
+            batchName = helper.formatBatchName(sc.nextLine());
             if (batchName.equalsIgnoreCase("q"))
                 return;
 
             while (!helper.isBatchNameValid(batchName, msg)) {
                 System.out.print(msg.message + "\nPlease Enter a valid batchName: ");
-                batchName = sc.nextLine();
+                batchName = helper.formatBatchName(sc.nextLine());
                 if (batchName.equalsIgnoreCase("q"))
                     return;
             }
@@ -633,7 +635,7 @@ public class CmdUiclient {
                     return;
             }
             if(questionNumber<=0 || questionNumber>i-1)
-                System.out.println("!!!Questin number out of range!!!");
+                System.out.println("!!!Question number out of range!!!");
         }while(questionNumber<=0 || questionNumber>i-1);
 
         //Enter new Question
@@ -658,13 +660,13 @@ public class CmdUiclient {
         showBatchList();
         do {
             System.out.print("Enter Batch name : ");
-            batchName = sc.nextLine();
+            batchName = helper.formatBatchName(sc.nextLine());
             if (batchName.equalsIgnoreCase("q"))
                 return;
 
             while (!helper.isBatchNameValid(batchName, msg)) {
                 System.out.print(msg.message + "\nPlease Enter a valid batchName: ");
-                batchName = sc.nextLine();
+                batchName = helper.formatBatchName(sc.nextLine());
                 if (batchName.equalsIgnoreCase("q"))
                     return;
             }
@@ -723,13 +725,13 @@ public class CmdUiclient {
         do {
 
             System.out.print("Enter Student phone Number: ");
-            studentPhoneNumber = sc.nextLine();
+            studentPhoneNumber = helper.formatPhoneNumber(sc.nextLine());
             if (studentPhoneNumber.equalsIgnoreCase("q"))           //Aborts the current process and back to previous menu.
                 return;
 
             while (!helper.isPhoneNumberValid(studentPhoneNumber, msg)) {
                 System.out.print(msg.message + "\nPlease enter valid phone number: ");
-                studentPhoneNumber = sc.nextLine();
+                studentPhoneNumber = helper.formatPhoneNumber(sc.nextLine());
                 if (studentPhoneNumber.equalsIgnoreCase("q"))         //Aborts the current process and back to previous menu.
                     return;
             }
@@ -787,13 +789,13 @@ public class CmdUiclient {
         showBatchList();
         do {
             System.out.print("Enter Batch name : ");
-            batchName = sc.nextLine();
+            batchName = helper.formatBatchName(sc.nextLine());
             if (batchName.equalsIgnoreCase("q"))
                 return;
 
             while (!helper.isBatchNameValid(batchName, msg)) {
                 System.out.print(msg.message + "\nPlease Enter a valid batchName: ");
-                batchName = sc.nextLine();
+                batchName = helper.formatBatchName(sc.nextLine());
                 if (batchName.equalsIgnoreCase("q"))
                     return;
             }
@@ -883,7 +885,7 @@ public class CmdUiclient {
         if(controller.submitFeedback(studentFeedback,student.getBatchName()))
             System.out.println("Feedback Submitted");
         else
-            System.out.println("unexpeted error during feedback submission!!!!!!!!!");
+            System.out.println("unexpected error during feedback submission!!!!!!!!!");
 
         System.out.print("press enter to continue: ");
         sc.nextLine();
@@ -934,13 +936,13 @@ public class CmdUiclient {
         showBatchList();
         do {
             System.out.print("Enter Batch name : ");
-            batchName = sc.nextLine();
+            batchName = helper.formatBatchName(sc.nextLine());
             if (batchName.equalsIgnoreCase("q"))
                 return;
 
             while (!helper.isBatchNameValid(batchName, msg)) {
                 System.out.print(msg.message + "\nPlease Enter a valid batchName: ");
-                batchName = sc.nextLine();
+                batchName = helper.formatBatchName(sc.nextLine());
                 if (batchName.equalsIgnoreCase("q"))
                     return;
             }
