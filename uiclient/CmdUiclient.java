@@ -164,18 +164,19 @@ public class CmdUiclient {
         System.out.println("****************\n");
 
 
-//            System.out.print("sign in as admin (Y/N): ");
-//            String opt=sc.nextLine();
-//            String role;
-//
-//            if(opt.equalsIgnoreCase("y"))
-//                role="admin";
-//            else if(opt.equalsIgnoreCase("n"))
-//                role="student";
-//            else {
-//                System.out.println("Invalid Input!  redirecting to HOME PAGE--> .");
-//                return;
-//            }
+/*          System.out.print("sign in as admin (Y/N): ");
+            String opt=sc.nextLine();
+            String role;
+
+            if(opt.equalsIgnoreCase("y"))
+                role="admin";
+            else if(opt.equalsIgnoreCase("n"))
+                role="student";
+            else {
+                System.out.println("Invalid Input!  redirecting to HOME PAGE--> .");
+                return;
+            }                                       */
+
             //phone number
             System.out.print("Enter Phone Number: ");
             String phoneNumber=sc.nextLine();
@@ -202,17 +203,17 @@ public class CmdUiclient {
             }
 
 
-//            if(controller.signIn(phoneNumber,password,role,msg)){
-//                System.out.println("<--------sign in success------->");
-//
-//                if (role.equalsIgnoreCase("admin")) {
-//                    adminHomePage();
-//                } else {
-//                    studentHomePage(phoneNumber);
-//                }
-//            }
-//            else
-//                System.out.println(msg.message+  "\nRedirecting to Home Page----->");
+/*            if(controller.signIn(phoneNumber,password,role,msg)){
+                System.out.println("<--------sign in success------->");
+
+                if (role.equalsIgnoreCase("admin")) {
+                    adminHomePage();
+                } else {
+                    studentHomePage(phoneNumber);
+                }
+            }
+            else
+                System.out.println(msg.message+  "\nRedirecting to Home Page----->");    */
 
             if(controller.adminSignIn(phoneNumber,password,msg)){
                 System.out.println("<--------sign in success------->");
@@ -316,32 +317,33 @@ public class CmdUiclient {
         System.out.println("\n*********************");
         System.out.println("* Student Home Page *");
         System.out.println("*********************\n");
-        while (true){
-            
-
+        while (true) {
             System.out.println("Options:");
-        System.out.println("1. Submit Feedback");
-        System.out.println("2. Sign out");
+            System.out.println("1. Submit Feedback");
+            System.out.println("2. Sign out");
 
-        System.out.print("Enter your option: ");
-        int opt = 0;
-        try {
-            opt = sc.nextInt();
-        } catch (InputMismatchException e) {
-            System.out.print("");
-        }
-        sc.nextLine();                           // To remove new Line character from input stream.
+            System.out.print("Enter your option: ");
+            int opt = 0;
 
-        if (opt == 1)
-            submitFeedback(student);
-        else if (opt == 2)
-            return;
-        else {
-            System.out.println("!!!invalid input!!!");
-            System.out.print("press enter: ");
-            sc.nextLine();
+            try {
+                opt = sc.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.print("");
+            }
+
+            sc.nextLine();                           // To remove new Line character from input stream.
+
+            if (opt == 1)
+                submitFeedback(student);
+            else if (opt == 2)
+                return;
+            else {
+                System.out.println("!!!invalid input!!!");
+                System.out.print("press enter: ");
+                sc.nextLine();
+            }
         }
-    }
+
 
     }
 
